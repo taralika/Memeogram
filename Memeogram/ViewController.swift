@@ -109,7 +109,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareBtnPressed(_ sender: UIBarButtonItem)
     {
         UIGraphicsBeginImageContext(memeView.frame.size)
-        //memeImgView.layer.render(in: UIGraphicsGetCurrentContext()!)
         memeView.drawHierarchy(in: memeImgView.frame, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
