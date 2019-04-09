@@ -115,5 +115,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let activityVC = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
+        
+        // for iPad
+        if let popOver = activityVC.popoverPresentationController
+        {
+            popOver.sourceView = self.view
+            popOver.barButtonItem = self.shareBtn
+        }
     }
 }
