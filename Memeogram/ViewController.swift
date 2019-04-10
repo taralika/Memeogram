@@ -20,8 +20,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        topTxt.delegate = self
-        bottomTxt.delegate = self
+        setupTextField(tf: topTxt, text: "TOP")
+        setupTextField(tf: bottomTxt, text: "BOTTOM")
         shareBtn.isEnabled = false
     }
     
@@ -37,19 +37,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    func setupTextField(tf: UITextField, text: String) {
+        tf.defaultTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth: -4.0,
+        ]
+        tf.textColor = UIColor.white
+        tf.tintColor = UIColor.white
+        tf.textAlignment = .center
+        tf.text = text
+        tf.delegate = self
+    }
 
     @IBAction func pickImageFromAlbum(_ sender: UIBarButtonItem) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = true
-        present(imagePicker, animated: true, completion: nil)
+        chooseImageFromCameraOrPhoto(source: .photoLibrary)
     }
     
     @IBAction func pickImageFromCamera(_ sender: UIBarButtonItem) {
+        chooseImageFromCameraOrPhoto(source: .camera)
+    }
+    
+    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType)
+    {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = source
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
     }
