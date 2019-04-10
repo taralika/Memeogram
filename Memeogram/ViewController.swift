@@ -17,6 +17,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var shareBtn: UIBarButtonItem!
     @IBOutlet weak var memeView: UIView!
     
+    var memedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -125,10 +127,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         UIGraphicsBeginImageContext(memeView.frame.size)
         memeView.drawHierarchy(in: memeImgView.frame, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        memedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        let activityVC = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [memedImage!], applicationActivities: nil)
+        
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if completed
+            {
+                self.save()
+            }
+        }
+        
         present(activityVC, animated: true, completion: nil)
         
         // for iPad
@@ -138,4 +148,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             popOver.barButtonItem = self.shareBtn
         }
     }
+    
+    func save()
+    {
+        _ = Meme(topText: topTxt.text!, bottomText: bottomTxt.text!, originalImage: memeImgView.image!, memedImage: memedImage!)
+    }
+}
+
+struct Meme
+{
+    let topText: String
+    let bottomText: String
+    let originalImage: UIImage
+    let memedImage: UIImage
 }
