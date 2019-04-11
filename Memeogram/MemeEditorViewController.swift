@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var memeImgView: UIImageView!
     @IBOutlet weak var topTxt: UITextField!
@@ -100,7 +100,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
     }
     
@@ -144,8 +144,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // for iPad
         if let popOver = activityVC.popoverPresentationController
         {
-            popOver.sourceView = self.view
-            popOver.barButtonItem = self.shareBtn
+            popOver.sourceView = view
+            popOver.barButtonItem = shareBtn
         }
     }
     
@@ -153,12 +153,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         _ = Meme(topText: topTxt.text!, bottomText: bottomTxt.text!, originalImage: memeImgView.image!, memedImage: memedImage!)
     }
-}
-
-struct Meme
-{
-    let topText: String
-    let bottomText: String
-    let originalImage: UIImage
-    let memedImage: UIImage
 }
