@@ -223,13 +223,17 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="vq2-nc-kVM" firstAttribute="centerX" secondItem="Pmm-dz-6rB" secondAttribute="centerX" id="1Gh-oM-OMk"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BzX-cX-t5N" secondAttribute="trailing" id="1wq-6M-MJd"/>
                                             <constraint firstItem="Pmm-dz-6rB" firstAttribute="centerX" secondItem="ksO-SL-tOG" secondAttribute="centerX" id="AZF-RP-tdk"/>
                                             <constraint firstItem="Pmm-dz-6rB" firstAttribute="top" secondItem="ksO-SL-tOG" secondAttribute="top" id="Mz2-oK-3y0"/>
                                             <constraint firstAttribute="bottom" secondItem="vq2-nc-kVM" secondAttribute="bottom" constant="-2" id="N8o-L9-fed"/>
+                                            <constraint firstItem="vq2-nc-kVM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ksO-SL-tOG" secondAttribute="leading" id="U7Y-Pq-PyT"/>
                                             <constraint firstItem="BzX-cX-t5N" firstAttribute="centerX" secondItem="ksO-SL-tOG" secondAttribute="centerX" id="XSI-wP-8Xx"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vq2-nc-kVM" secondAttribute="trailing" id="eBC-e4-0Ix"/>
                                             <constraint firstItem="Pmm-dz-6rB" firstAttribute="leading" secondItem="ksO-SL-tOG" secondAttribute="leading" id="h6s-QK-ysc"/>
                                             <constraint firstAttribute="width" secondItem="ksO-SL-tOG" secondAttribute="height" multiplier="1:1" id="hQ0-Fg-AdX"/>
                                             <constraint firstItem="BzX-cX-t5N" firstAttribute="top" secondItem="Pmm-dz-6rB" secondAttribute="top" id="mIa-CA-Xdm"/>
+                                            <constraint firstItem="BzX-cX-t5N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ksO-SL-tOG" secondAttribute="leading" id="rV6-sS-M2h"/>
                                         </constraints>
                                     </view>
                                 </subviews>
