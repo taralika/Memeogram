@@ -77,6 +77,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         shareBtn.isEnabled = false
         topTxt.text = topTxt.placeholder
         bottomTxt.text = bottomTxt.placeholder
+        
+        // Dismiss the editor on cancel
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
@@ -136,6 +140,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if completed
             {
                 self.save()
+                
+                // Dismiss editor after saving the meme
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
@@ -151,6 +159,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func save()
     {
-        _ = Meme(topText: topTxt.text!, bottomText: bottomTxt.text!, originalImage: memeImgView.image!, memedImage: memedImage!)
+        let meme = Meme(topText: topTxt.text!, bottomText: bottomTxt.text!, originalImage: memeImgView.image!, memedImage: memedImage!)
+        
+        // Store the meme so we can show it in "sent memes"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
 }
